@@ -10,6 +10,10 @@ public class Edge implements Comparable<Edge>{
     private Edge previous;
     private Map<Edge, Integer> vertices;
 
+    private boolean availableForThreads;
+
+    private boolean changed;
+
     public Edge(int number) {
         this.number = number;
         this.distance = Integer.MAX_VALUE;
@@ -25,7 +29,26 @@ public class Edge implements Comparable<Edge>{
         return Integer.compare(distance, o.getDistance());
     }
 
-    public int getDistance() {
+    public synchronized boolean offerDistance(int distance, Edge edge) {
+        if(this.distance > distance) {
+            this.distance = distance;
+            this.previous = edge;
+            changed = true;
+        }
+        return this.distance > distance;
+    }
+
+    public synchronized void setChange(boolean change) {
+        this.changed = change;
+    }
+
+    public synchronized boolean hasChanged() {
+        return changed;
+    }
+
+    //Getters and Setters
+
+    public synchronized int getDistance() {
         return distance;
     }
 

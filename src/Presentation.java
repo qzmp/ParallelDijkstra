@@ -21,9 +21,8 @@ public class Presentation {
         Graph graph = getSimpleGraph();
         Edge[] edges = Dijkstra.findShortestPaths(graph, 0);
 
-        graph.generateRandom(7, 9, 20);
+        //graph.generateRandom(7, 9, 20);
 
-        edges = Dijkstra.findShortestPaths(graph, 0);
-
+        edges = Dijkstra.findShortestPathsParallel(graph, 0);
     }
 }
