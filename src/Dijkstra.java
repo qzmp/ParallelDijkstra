@@ -36,6 +36,9 @@ public class Dijkstra {
         return edges;
     }
 
+
+
+
     private static int[] getArrayOfInfinities(int size) {
         int[] result = new int[size];
         for(int i = 0; i < size; i++) {
@@ -45,7 +48,7 @@ public class Dijkstra {
         return result;
     }
 
-    private static Edge[] convertGraph(Graph graph) {
+    public static Edge[] convertGraph(Graph graph) {
         Edge[] edges = new Edge[graph.getSize()];
 
         for(int i = 0; i < edges.length; i++) {

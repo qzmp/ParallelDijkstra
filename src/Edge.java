@@ -10,6 +10,11 @@ public class Edge implements Comparable<Edge>{
     private Edge previous;
     private Map<Edge, Integer> vertices;
 
+    int meetDistance;
+
+    boolean visitedByForward;
+    boolean visitedByBackward;
+
     public Edge(int number) {
         this.number = number;
         this.distance = Integer.MAX_VALUE;
@@ -47,5 +52,30 @@ public class Edge implements Comparable<Edge>{
 
     public Map<Edge, Integer> getVertices() {
         return vertices;
+    }
+
+    public boolean isVisitedByForward() {
+        return visitedByForward;
+    }
+
+    public void setVisitedByForward(boolean visitedByForward) {
+        this.visitedByForward = visitedByForward;
+    }
+
+    public boolean isVisitedByBackward() {
+        return visitedByBackward;
+    }
+
+    public void setVisitedByBackward(boolean visitedByBackward) {
+        this.visitedByBackward = visitedByBackward;
+    }
+
+    public int getMeetDistance() {
+        return meetDistance;
+    }
+
+    public synchronized void setMeetDistance(int meetDistance) {
+        System.out.println("met");
+        this.meetDistance = meetDistance;
     }
 }
